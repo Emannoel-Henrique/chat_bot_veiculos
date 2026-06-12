@@ -44,7 +44,11 @@ UNSPLASH_API_URL = "https://api.unsplash.com/search/photos"
 
 client = genai.Client(api_key=os.getenv("GENAI_KEY"))
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_folder="chatbot-gemini-frontend-websocket",
+    static_url_path=""
+)
 app.secret_key = "ch@tb07"
 
 socketio = SocketIO(app, cors_allowed_origins="*")
