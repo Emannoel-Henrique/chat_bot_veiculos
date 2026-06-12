@@ -1,4 +1,4 @@
-const URL_BACKEND = window.location.origin;
+const URL_BACKEND = "http://127.0.0.1:5000";
 
 document.addEventListener('DOMContentLoaded', () => {
     let socket = null;
