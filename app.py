@@ -44,14 +44,14 @@ UNSPLASH_API_URL = "https://api.unsplash.com/search/photos"
 
 client = genai.Client(api_key=os.getenv("GENAI_KEY"))
 
-app = Flask(
-    __name__,
-    static_folder="chatbot-gemini-frontend-websocket",
-    static_url_path=""
-)
+app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY", "ch@tb07")
 app.secret_key = "ch@tb07"
 
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins=[
+    "https://seu-app.vercel.app",
+    "http://localhost:5000"  # para testes locais
+])
 
 active_chats = {}
 
@@ -310,11 +310,13 @@ def handle_disconnect():
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    
     print("=" * 50)
     print("Servidor do Chatbot Automotivo iniciando...")
-    print("Porta: 5000")
+    print(f"Porta: {port}")
     print(f"Gemini API: {'Configurada' if os.getenv('GENAI_KEY') else 'NÃO CONFIGURADA'}")
     print(f"Unsplash API: {'Configurada' if os.getenv('UNSPLASH_ACCESS_KEY') else 'NÃO CONFIGURADA'}")
     print("=" * 50)
 
-    socketio.run(app, host="127.0.0.1", port=5000, debug=False)
+    socketio.run(app, host="0.0.0.0", port=port, debug=False)

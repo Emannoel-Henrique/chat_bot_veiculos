@@ -1,8 +1,9 @@
 flask
-flask-cors
-flask-SocketIO
+flask-socketio
 google-genai
 python-dotenv
+requests
 gunicorn
 gevent
 gevent-websocket
+eventlet
