@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentor de Pista | Chatbot Automotivo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+
+    <section class="chat-container pilot-panel">
+      <div class="pilot-badge">Ex-piloto • Guia automotivo</div>
+
+      <div class="pilot-visual">
+        <div class="speed-ring">
+          <div class="track-lines"></div>
+          <img src="../img/piloto2.png" alt="Piloto" class="pilot-photo" />
+        </div>
+      </div>
+
+      <section class="hero-copy">
+        <h2>Mentor de Pista</h2>
+        <p>
+          Um chatbot com pegada de box: direto, confiável e pronto para ajudar
+          com carros, motos, manutenção, pilotagem segura e dúvidas do dia a dia.
+        </p>
+
+        <div class="specialties">
+          <span>Carros</span>
+          <span>Motos</span>
+          <span>Manutenção</span>
+          <span>Segurança</span>
+        </div>
+      </section>
+
+      <div id="controles" class="control-panel">
+        <button id="iniciarBtn">Iniciar conversa</button>
+        <button id="limparBtn">Limpar tela</button>
+        <button id="encerrarBtn">Encerrar conversa</button>
+      </div>
+    </section>
+
+    <section class="chat-container chat-panel">
+      <header class="chat-header">
+        <div class="brand-mark">MP</div>
+
+        <div class="header-text">
+          <h1>Mentor de Pista</h1>
+          <p>Conselhos de ex-piloto para carros, motos e estrada</p>
+        </div>
+        <div id="connection-status" class="status-offline">Conectando...</div>
+      </header>
+
+      <div id="chat-box" class="chat-box"></div>
+
+      <footer class="chat-input-area">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Pergunte sobre carro, moto, manutenção, peças ou segurança..."
+        />
+          <select id="modo-resposta" class="modo-resposta">
+          <option value="curta">Instantâneo</option>
+          <option value="longa">Detalhado</option>
+        </select>
+        <button id="send-button">Enviar</button>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
