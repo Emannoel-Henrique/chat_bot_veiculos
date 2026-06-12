@@ -179,10 +179,12 @@ def search_car_image(search_term):
 
 @app.route("/")
 def root():
-    return jsonify({
-        "api-websocket": "chatbot",
-        "status": "ok"
-    })
+    return app.send_static_file("index.html")
+
+
+@app.route("/<path:path>")
+def servir_frontend(path):
+    return app.send_static_file(path)
 
 
 @socketio.on("connect")
