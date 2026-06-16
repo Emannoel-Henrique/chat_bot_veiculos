@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             reconnectionAttempts: 5,
             reconnectionDelay: 1000,
             reconnectionDelayMax: 4000,
-            timeout: 10000
+            timeout: 60000
         });
 
         socket.on('connect', () => {

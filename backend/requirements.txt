@@ -6,4 +6,3 @@ requests
 gunicorn
 gevent
 gevent-websocket
-eventlet

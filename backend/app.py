@@ -46,12 +46,21 @@ client = genai.Client(api_key=os.getenv("GENAI_KEY"))
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "ch@tb07")
-app.secret_key = "ch@tb07"
 
-socketio = SocketIO(app, cors_allowed_origins=[
-    "https://seu-app.vercel.app",
-    "http://localhost:5000"  # para testes locais
-])
+FRONTEND_URLS = [
+    url.strip()
+    for url in os.getenv(
+        "FRONTEND_URLS",
+        "http://localhost:5500,http://127.0.0.1:5500,https://chat-bot-veiculos.onrender.com"
+    ).split(",")
+    if url.strip()
+]
+
+socketio = SocketIO(
+    app,
+    cors_allowed_origins=FRONTEND_URLS,
+    async_mode="gevent"
+)
 
 active_chats = {}
 
